@@ -14,3 +14,15 @@ echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
   sudo apt-get update
   sudo apt-get install fontconfig openjdk-11-jre
   sudo apt-get install jenkins
+
+# To change port number
+systemctl stop jenkins
+cd /etc/default
+vim /jenkins  # change port  HTTP_PORT=8080 
+
+cd /lib/systemd/system
+vim jenkins.service  #change Environments="Jenkins_Port=8080"
+
+systemctl daemon-reload
+systemctl restart jenkins
+systemctl status jenkins
