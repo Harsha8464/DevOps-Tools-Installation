@@ -28,6 +28,11 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 
 sudo docker run hello-world
 
+#Add user
+usermod -aG docker ubuntu
+newgrp docker
+chmod 777 /var/run/docker.sock
+
 #Uninstall the Docker Engine, CLI, containerd, and Docker Compose packages:
 sudo apt-get purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
 
